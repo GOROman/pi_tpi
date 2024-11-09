@@ -3,14 +3,19 @@
 
 #include <stdint.h>
 
+// tiny10 Pinout
+// DAT 1 |*  | 6 ~RESET
+// GND 2 |   | 5 VCC(5V)
+// CLK 3 |   | 4 N.C.
+
 #ifndef GPRST
-#define GPRST 2
+#define GPRST 0
 #endif
 #ifndef GPCLK
-#define GPCLK 3
+#define GPCLK 19
 #endif
 #ifndef GPDAT
-#define GPDAT 4
+#define GPDAT 27
 #endif
 
 
@@ -82,5 +87,3 @@ void TPIDump( int start, int length, const char * name );
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-

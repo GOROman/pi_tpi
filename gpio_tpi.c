@@ -3,12 +3,24 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <Arduino.h>
 
 //Portions of this are roughly based on:
 //	https://pcm1723.hateblo.jp/entry/20111208/1323351725
 
-
-void ClockDelay() { int i = 1000; do { asm volatile ("nop"); } while( i-- ); } //700ksps (@i = 500) (slow enough for most systems) ... on further use, i = 1000 seems more reliable.
+#if 0
+void ClockDelay() { 
+//	int i = 1000; 
+	int i = 1000; 
+	do { 
+		asm volatile ("nop"); 
+	} while( i-- ); 
+} //700ksps (@i = 500) (slow enough for most systems) ... on further use, i = 1000 seems more reliable.
+#else
+void ClockDelay() {
+	delayMicroseconds(1);
+}
+#endif
 
 int did_send_last = 0;
 
@@ -353,4 +365,3 @@ int TPIEraseAndWriteAllFlash( const uint8_t * data, int length, int quiet )
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
